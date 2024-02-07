@@ -1,7 +1,16 @@
 from django.contrib import admin
-from .models import Post
+from .models import PostCategory, Post, Comment
+
+class CategoryAdmin(admin.ModelAdmin):
+    pass
 
 class PostAdmin(admin.ModelAdmin):
-    pass  # This just tells Django to use the default settings.
+    pass 
 
+class CommentAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(PostCategory, CategoryAdmin)
 admin.site.register(Post, PostAdmin)
+admin.site.register(Comment, CommentAdmin)
