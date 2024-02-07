@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Post
 
-# Register your models here.
+class PostAdmin(admin.ModelAdmin):
+    pass  # This just tells Django to use the default settings.
+
+admin.site.register(Post, PostAdmin)
