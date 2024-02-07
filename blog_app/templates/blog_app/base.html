@@ -1,0 +1,16 @@
+<!-- C:\rootfolder\blog_app\templates\blog_app\base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My Personal Blog</title>
+</head>
+<body>
+<h1>My Personal Blog</h1>
+<a href="{% url 'home' %}">Home</a>
+<hr>
+{% block page_title %}{% endblock page_title %}
+{% block page_content %}{% endblock page_content %}
+</body>
+</html>
