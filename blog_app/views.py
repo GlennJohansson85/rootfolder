@@ -1,16 +1,25 @@
 # blog_app/views.py
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog_app.models import Post, Comment
+from .forms import PostForm
 
 
-# Model for Main page
+# home.html
 def home(request):
-    posts = Post.objects.all().order_by("-created_on")
-    context = {
-        "posts": posts,
-    }
-    
-    return render(request, "blog_app/home.html", context)
+    posts = Post.objects.all()
+    return render(request, "blog_app/home.html", {"posts": posts})
+
+
+def post(request):
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = PostForm()
+
+    return render(request, "blog_app/post.html", {"form": form})
 
 
 def post_category(request, category):
