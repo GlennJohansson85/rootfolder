@@ -1,0 +1,20 @@
+<!-- C:\rootfolder\blog_app\templates\blog_app\user_logout.html -->
+{% extends 'blog_app/base.html' %}
+
+{% block page_title %}
+    <title>User Logout</title>
+{% endblock page_title %}
+
+{% block page_content %}
+    <div class="user_logout-container">
+        <h2>User Logout</h2>
+        
+        {% if user.is_authenticated %}
+            <p>You have been successfully logged out.</p>
+        {% else %}
+            <p>You are not currently logged in.</p>
+        {% endif %}
+
+        <a href="{% url 'home' %}">Back to Home</a>
+    </div>
+{% endblock page_content %}
