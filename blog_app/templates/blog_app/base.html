@@ -1,16 +1,23 @@
 <!-- C:\rootfolder\blog_app\templates\blog_app\base.html -->
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>My Personal Blog</title>
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'blog_app/css/style.css' %}">
 </head>
 <body>
-<h1>My Personal Blog</h1>
-<a href="{% url 'home' %}">Home</a>
-<hr>
-{% block page_title %}{% endblock page_title %}
-{% block page_content %}{% endblock page_content %}
+          <div class="navbar">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'post' %}">Post</a>
+        </div>
+    <div class="blog-container">
+            <h1>Blog</h1>
+            <hr>
+            {% block page_title %}{% endblock page_title %}
+            {% block page_content %}{% endblock page_content %}
+    </div>
 </body>
 </html>
