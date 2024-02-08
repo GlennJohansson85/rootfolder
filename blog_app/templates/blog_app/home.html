@@ -6,20 +6,28 @@
 {% endblock page_title %}
 
 {% block page_content %}
+    <div class="post-container">
+        <h2>All Posts</h2>
 
-<div class
-    <h2>All Posts</h2>
-    {% for post in posts %}
-        <div class="post">
-            <h3>{{ post.title }}</h3>
-            
-            {% if post.image %}
-                <img src="{{ post.image.url }}" alt="{{ post.title }}">
-            {% endif %}
-            
-            <p>{{ post.body }}</p>
-            <p>Author: {{ post.author.username }}</p>
-            <p>Created on: {{ post.created_on }}</p>
-        </div>
-    {% endfor %}
+        {% if user_needs_login %}
+            <p>You need to be logged in to create a new post. <a href="{% url 'user_login' %}">Login here</a>.</p>
+        {% else %}
+            <a href="{% url 'post' %}">Create a New Post</a>
+        {% endif %}
+
+        {% for post in posts %}
+            <div class="post-card">
+                <h3>{{ post.title }}</h3>
+
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                {% endif %}
+
+                <p>{{ post.body }}</p>
+                <p>Author: {{ post.author.username }}</p>
+                <p>Created on: {{ post.created_on }}</p>
+                <hr> <!-- Add a horizontal line between posts -->
+            </div>
+        {% endfor %}
+    </div>
 {% endblock page_content %}
