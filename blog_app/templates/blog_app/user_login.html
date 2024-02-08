@@ -1,0 +1,42 @@
+<!-- C:\rootfolder\blog_app\templates\blog_app\user_login.html -->
+{% extends 'blog_app/base.html' %}
+
+{% block title %}
+    My Family's Travels Blog - Login Page
+{% endblock title %}
+
+{% block page_content %}
+    <div class="user_login-container">
+        <h2>Login</h2>
+
+        {% if form.errors %}
+            <div class="error-message">
+                <p>Login failed. Try again!</p>
+            </div>
+        {% endif %}
+
+        <p>You need to be logged in to gain access.</p>
+
+        <form method="post" action="{% url 'user_login' %}" class="user_login-form">
+            {% csrf_token %}
+
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+
+            <label for="{{ form.password.id_for_label }}">Password:</label>
+            {{ form.password }}
+
+            <button type="submit">Login</button>
+        </form>
+
+        {% if request.GET.next %}
+            <p><a href="{% url 'user_registration' %}">Create an account</a></p>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            <p>Already logged in as {{ user.username }}. <a href="{% url 'logout' %}">Logout</a> if you want to log in with a different account.</p>
+        {% endif %}
+    </div>
+{% endblock page_content %}
+
+
