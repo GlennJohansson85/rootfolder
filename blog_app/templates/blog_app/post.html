@@ -1,18 +1,43 @@
 <!-- C:\rootfolder\blog_app\templates\blog_app\post.html -->
 {% extends 'blog_app/base.html' %}
 
-{% block page_title %}
-    <title>Create a New Post</title>
-{% endblock page_title %}
+{% load static %}
+
+{% block title %}
+    My Family's Travels Blog - Post Page
+{% endblock title %}
 
 {% block page_content %}
-    <h2>Create a New Post</h2>
-    
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+    <div class="post-form-container">
+        <h2>Create a New Post</h2>
+        
+        <form method="post" enctype="multipart/form-data" class="post-form">
+            {% csrf_token %}
 
-    <a href="{% url 'home' %}">Back to All Posts</a>
+            <label for="{{ form.title.id_for_label }}">Title:</label>
+            <br>
+            {{ form.title }}
+            <br><br>
+
+            <label for="{{ form.content.id_for_label }}">Content:</label>
+            <br>
+            <textarea name="{{ form.content.name }}" id="{{ form.content.id_for_label }}" rows="5" cols="50">{{ form.content.value }}</textarea>
+            <br><br>
+
+            <label for="{{ form.categories.id_for_label }}">Categories:</label>
+            <br>
+            {{ form.categories }}
+            <br><br>
+
+            <label for="{{ form.image.id_for_label }}">Image:</label>
+            <br>
+            {{ form.image }}
+            <br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <a href="{% url 'home' %}" class="back-link">Back to All Posts</a>
+    </div>
 {% endblock page_content %}
+
