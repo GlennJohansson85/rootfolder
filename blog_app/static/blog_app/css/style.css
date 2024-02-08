@@ -1,15 +1,74 @@
 /* static/css/style.css */
 
 
-
+/* home.html */
 .blog-container {
     margin-left: 20%;
     margin-right: 20%;
     background-color: #fff; 
+    padding-left: 20px;
+    padding-right: 20px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px;
 }
 
 .post {
-    margin-bottom: 20px; /* Add some spacing between posts */
+    margin-bottom: 20px; 
 }
 
+.post-card img {
+    width: 100%;
+    height: auto;
+    image-rendering: auto;
+    object-fit: cover; 
+}
+
+/*-------------------*/
+
+/* post.html */
+.post-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+textarea,
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+/*---------------------------------*/
+
+/*user_registration*/
+
+/*user_login*/
+
+/*user_logout*/
