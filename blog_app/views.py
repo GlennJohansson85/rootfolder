@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from blog_app.models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.urls import reverse
+import logging
+
 
 
 def user_registration(request):
@@ -74,22 +76,32 @@ def post(request):
 
     return render(request, "blog_app/post.html", {"form": form})
 
-
+print("Comment view called!")
+logger = logging.getLogger(__name__)
 
 @login_required
 def comment(request, post_id):
+    print(request.POST)
     post = get_object_or_404(Post, id=post_id)
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.author = request.user
-            comment.save()
+            try:
+                comment = form.save(commit=False)
+                comment.author = request.user
+                comment.save()
 
-            # Redirect to the home page with the anchor to the post
-            return redirect(reverse('home') + f'#{post_id}')
+                # Redirect to the home page - anchor post
+                return redirect(reverse('home') + f'#{post_id}')
+            except Exception as e:
+                logger.error(f"Error saving comment: {e}")
+                # Log the form data for debugging
+                logger.error(f"Form data: {request.POST}")
+        else:
+            logger.error(f"Invalid form: {form.errors}")
+            # Log the form data for debugging
+            logger.error(f"Form data: {request.POST}")
     else:
         form = CommentForm()
 
