@@ -1,10 +1,10 @@
 # blog_app/views.py
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from blog_app.models import Post, Comment
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 
 
 def user_registration(request):
@@ -75,13 +75,19 @@ def post(request):
 
 
 
-def post_detail(request, pk):
-    post = Post.objects.get(pk=pk)
-    comments = Comment.objects.filter(post=post)
-    context = {
-        "post": post,
-        "comments": comments,
-    }
+@login_required
+def comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
 
-    return render(request, "blog_app/post_detail.html", context)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect('home') 
+    else:
+        form = CommentForm()
 
+    return render(request, 'blog_app/home.html', {'post': post, 'form': form})
