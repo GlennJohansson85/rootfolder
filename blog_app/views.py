@@ -5,6 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from blog_app.models import Post, Comment
 from .forms import PostForm, CommentForm
+from django.urls import reverse
 
 
 def user_registration(request):
@@ -86,7 +87,9 @@ def comment(request, post_id):
             comment.post = post
             comment.author = request.user
             comment.save()
-            return redirect('home') 
+
+            # Redirect to the home page with the anchor to the post
+            return redirect(reverse('home') + f'#{post_id}')
     else:
         form = CommentForm()
 

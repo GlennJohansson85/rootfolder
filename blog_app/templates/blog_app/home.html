@@ -1,6 +1,5 @@
 <!-- C:\rootfolder\blog_app\templates\blog_app\home.html -->
 {% extends 'blog_app/base.html' %}
-{% load static %}
 
 {% block page_title %}
     <title>All Posts</title>
@@ -30,38 +29,34 @@
                 
                 {% if user.is_authenticated %}
                     <!-- Comment form for authenticated users -->
-                    <form method="post" action="{% url 'comment' post_id=post.pk %}" class="comment-form" data-post-id="{{ post.id }}">
+                    <form method="post" action="" id="commentForm">
                         {% csrf_token %}
                         
-                        <!-- Textarea for the comment body -->
-                        {{ comment_form.body }}
+                        <!-- Comment textarea -->
+                        <label for="comment">Leave a Comment:</label>
+                        <textarea name="comment" id="comment" rows="4" cols="50" required></textarea>
 
                         <!-- Hidden field for the post_id -->
-                        <input type="hidden" name="post_id" value="{{ post.pk }}">
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
 
                         <!-- Submit button -->
-                        <button type="submit" class="comment-btn">Comment</button>
+                        <button type="submit">Submit Comment</button>
                     </form>
-
-                    <!-- Comments -->
-                    <div class="comments-section" data-post-id="{{ post.id }}">
-                        <p>Comments:</p>
-                        <ul>
-                            {% for comment in post.comments.all %}
-                                <li>
-                                    <strong>{{ comment.author.username }}</strong>: {{ comment.body }}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                {% else %}
+                    <p><a href="{% url 'user_login' %}">Login</a> to leave a comment.</p>
                 {% endif %}
+
+                <!-- Display comments for the current post -->
+                <h4>Comments:</h4>
+                {% for comment in post.comments.all %}
+                    <p>{{ comment.user.username }}: {{ comment.text }}</p>
+                {% endfor %}
+
+                <hr> <!-- Add a horizontal line between posts -->
             </div>
         {% endfor %}
     </div>
-
-    <!-- Include the JavaScript file -->
-    <script src="{% static 'blog_app/js/comment_ajax.js' %}?v=2"></script>
-{% endblock %}
+{% endblock page_content %}
 
 
 

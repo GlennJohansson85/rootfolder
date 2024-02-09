@@ -27,9 +27,12 @@ class Post(models.Model):
     
     
 class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments', null=True, default=1)
+    
     def __str__(self):
-        return f"{self.author.username} - {self.created_on}"
+        return f'Comment by {self.author.username} on {self.post.title}'
+
+    def get_absolute_url(self):
+        return reverse('home')  # Adjust this if needed
