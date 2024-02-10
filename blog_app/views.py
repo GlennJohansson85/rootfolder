@@ -58,7 +58,6 @@ def post_category(request, category):
         "category": category,
         "posts": posts,
     }
-    
     return render(request, "blog_app/post_category.html", context)
 
 
@@ -79,30 +78,26 @@ def post(request):
 print("Comment view called!")
 logger = logging.getLogger(__name__)
 
+
 @login_required
 def comment(request, post_id):
-    print(request.POST)
     post = get_object_or_404(Post, id=post_id)
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             try:
-                comment = form.save(commit=False)
-                comment.author = request.user
-                comment.save()
-
-                # Redirect to the home page - anchor post
-                return redirect(reverse('home') + f'#{post_id}')
+                comment = form.save(user=request.user, post=post, commit=True)
+                # Rest of your code
             except Exception as e:
                 logger.error(f"Error saving comment: {e}")
-                # Log the form data for debugging
-                logger.error(f"Form data: {request.POST}")
         else:
             logger.error(f"Invalid form: {form.errors}")
-            # Log the form data for debugging
-            logger.error(f"Form data: {request.POST}")
+            logger.error(f"Form data: {request.POST}")  #  debugging
     else:
         form = CommentForm()
 
     return render(request, 'blog_app/home.html', {'post': post, 'form': form})
+
+
+
