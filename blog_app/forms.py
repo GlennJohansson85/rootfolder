@@ -14,15 +14,14 @@ class PostForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['content']
-        widgets = {
-            'content': forms.Textarea(attrs={'rows': 4, 'cols': 50}),
-        }
+        fields = ['text']
 
-    def save(self, commit=True):
-        # Override the save method to set the post field before saving
+    def save(self, user, post, commit=True):
+        # Override the save method to set the user and post fields before saving
         comment = super().save(commit=False)
-        
+        comment.user = user
+        comment.post = post
+
         if commit:
             comment.save()
         return comment
