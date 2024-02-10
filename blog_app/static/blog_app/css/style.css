@@ -1,62 +1,180 @@
 /* static/css/style.css */
 
+/* ========================================================================
+                                                                                                 OVERALL STYLES - BASE.HTML
+   ========================================================================= */
+body {
+    max-width: 1200px;
+    margin: 20px auto;
+    background: linear-gradient(to left, rgba(255, 223, 52, 0.96), rgba(255, 244, 106, 0.96));
+    font-family: "QuicksandbookRegular-0gW4"; 
+    color: #333; 
+}
 
-/* home.html */
-.blog-container {
-    margin-left: 20%;
-    margin-right: 20%;
-    background-color: #fff; 
-    padding-left: 20px;
-    padding-right: 20px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+.content-container {
+    max-width: 800px;
+    margin: 10px auto; 
+    padding: 20px;
+    border-color: #ffac3b;
     border-radius: 10px;
+    background: linear-gradient(to right, #fffbcf, #fff35a);
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 63px;
+    font-family: 'QuicksandboldRegular-44B9';
+    letter-spacing: -5px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(to left, #ffac3b, #fd69a8);
+    -webkit-background-clip: text;
+    background-clip: text;         
+    color: transparent;            
+}
+
+/* =================================================================== FONT */
+@font-face {
+    font-family: 'QuicksandboldRegular-44B9'; 
+    src: url('/static/blog_app/fonts/QuicksandbookRegular-0gW4');
+}
+
+@font-face {
+    font-family: 'QuicksandboldRegular-44B9'; 
+    src: url('/static/blog_app/fonts/QuicksandboldRegular-44B9.otf');
+}
+
+/* ========================================================================
+                                                                                                                    USER_LOGIN.HTML
+   ========================================================================= */
+.join {
+    font-size: 40px;
+    font-family: 'QuicksandboldRegular-44B9';
+    letter-spacing: -2px;
+    text-align: center;
+    color: #fd69a8;
+    animation: sleekAnimation 4s infinite ease-in-out;
+    transition: transform 2s ease-in-out;
+    text-decoration: none;
+}
+.join a:hover {
+    color: #fd69a8;
+    transform: scale(1.2);
 }
 
 
-.post {
-    margin-bottom: 20px; 
+/* =============================================================
+                                                                                                                NAVBAR -
+===============================================================*/
+.base-navbar {
+    max-width: 830px; 
+    margin: 20px auto 20px;
+    color: #fff;
+    background: linear-gradient(to left, #fd69a8, #ffac3b);
+    height: 40px;
+    line-height: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
 }
 
-.post-card img {
-    width: 100%;
+.base-navbar a {
+    margin: 0 15px; 
+    text-decoration: none;
+    color: #fff; /
+}
+
+.base-navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+    .base-navbar {
+        height: auto; 
+    }
+
+    .base-navbar .burger-menu {
+        display: flex;
+    }
+
+    .base-navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #333;
+    }
+
+    .base-navbar .nav-links a {
+        margin: 0;
+        padding: 15px 20px;
+        text-align: center;
+    }
+}
+
+/* ========================================================================
+                                                                            POST WALL - DISPLAY POSTS - HOME.HTML
+   ========================================================================= */
+
+
+.post-card {
+    margin-bottom: 30px;
+}
+
+.post-card-img {
+    max-width: 100%;
     height: auto;
-    image-rendering: auto;
-    object-fit: cover; 
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 5px;
 }
 
-/*-------------------*/
-
-/* post.html */
-.post-form-container {
-    max-width: 600px;
-    margin: 0 auto;
+.display-comments {
+    height: auto; 
+    padding: 20px;
+    background-color: #ffac3b;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
+/* =========================================================================
+                                                                                                     CREATE A POST - POST.HTML
+   ========================================================================== */
 .form-group {
     margin-bottom: 20px;
 }
 
-label {
+.post-label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
-textarea,
+.post-textarea textarea,
 input[type="text"],
-input[type="file"] {
+select {
     width: 100%;
-    padding: 8px;
+    padding: 12px;
     box-sizing: border-box;
-    margin-top: 5px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
-button {
-    background-color: #007bff;
+.post-button {
+    background: linear-gradient(to left, rgba(253, 105, 168, 0.9), #ffac3b);
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .back-link {
@@ -66,10 +184,29 @@ button {
     text-decoration: none;
 }
 
-/*---------------------------------*/
 
-/*user_registration*/
+/* USER_LOGIN.HTML and USER_LOGOUT.HTML styles remain unchanged */
 
-/*user_login*/
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .base-navbar .burger-menu {
+        display: flex;
+    }
 
-/*user_logout*/
+    .base-navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #333;
+    }
+
+    .base-navbar .nav-links a {
+        margin: 0;
+        padding: 15px 20px;
+        text-align: center;
+    }
+}
+
