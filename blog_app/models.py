@@ -20,19 +20,16 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField("PostCategory", related_name="posts")
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.title
     
     
 class Comment(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    content = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments', null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()  
+    
     def __str__(self):
-        return f'Comment by {self.author.username}'
-
-    def get_absolute_url(self):
-        return reverse('home')
+        return f'{self.user.username} - {self.text}'
