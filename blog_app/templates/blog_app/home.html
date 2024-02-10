@@ -1,43 +1,53 @@
 <!-- C:\rootfolder\blog_app\templates\blog_app\home.html -->
 {% extends 'blog_app/base.html' %}
+{% load static %}
 
 {% block page_title %}
     <title>All Posts</title>
 {% endblock page_title %}
 
 {% block page_content %}
+    <!-- CONTAINER FOR ALL POSTS -->
     <div class="post-container">
+        <h1>My Family´s Travel Blog</h1>
+        <hr>
+        <!-- TITLE -->
         <h2>All Posts</h2>
-
+        
+        <!-- CREATE NEW POST LINK -->
         {% if user_needs_login %}
             <p>You need to be logged in to create a new post. <a href="{% url 'user_login' %}">Login here</a>.</p>
         {% else %}
             <a href="{% url 'post' %}">Create a New Post</a>
         {% endif %}
 
+        <!-- POST CARD -->
         {% for post in posts %}
             <div class="post-card">
                 <h3>{{ post.title }}</h3>
 
-                {% if post.image %}
-                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
-                {% endif %}
+                <!-- POST CARD IMAGE -->
+                <div class="post-card-img">
+                    {% if post.image %}
+                        <img class="post-card-img" src="{{ post.image.url }}" alt="{{ post.title }}">
+                    {% endif %}
+                </div>
 
                 <p>{{ post.body }}</p>
-                <p>Author: {{ post.author.username }}</p>
+                <p>Photo by: {{ post.user.username }}</p>
                 <p>Created on: {{ post.created_on }}</p>
-                
-                {% if user.is_authenticated %}
-                    <!-- Comment form for authenticated users -->
-                    <form method="post" action="" id="commentForm">
-                        {% csrf_token %}
-                        
-                        <!-- Comment textarea -->
-                        <label for="comment">Leave a Comment:</label>
-                        <textarea name="comment" id="comment" rows="4" cols="50" required></textarea>
 
-                        <!-- Hidden field for the post_id -->
-                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                <!-- Comment form for authenticated users -->
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'comment' post.id %}" id="commentForm">
+                        {% csrf_token %}
+
+                        <!-- Comment textarea -->
+                        <label for="id_content">Leave a Comment:</label>
+                        <textarea name="text" id="id_content" rows="4" cols="50" required></textarea>
+
+                        <!-- Hidden input for the author field -->
+                        {{ commentForm.author }}
 
                         <!-- Submit button -->
                         <button type="submit">Submit Comment</button>
@@ -47,16 +57,28 @@
                 {% endif %}
 
                 <!-- Display comments for the current post -->
-                <h4>Comments:</h4>
-                {% for comment in post.comments.all %}
-                    <p>{{ comment.user.username }}: {{ comment.text }}</p>
-                {% endfor %}
+                <div class="comments-display">
+                    <h4>Comments:</h4>
+                    {% for comment in post.comments.all %}
+                        <p>{{ comment.user.username }}: {{ comment.text }}</p>
+                    {% endfor %}
+                </div>
 
-                <hr> <!-- Add a horizontal line between posts -->
+                <hr class="comment-divider"> <!-- Add a horizontal line as a divider -->
+
             </div>
         {% endfor %}
     </div>
+
+<!-- Include the comment-script.js file for AJAX functionality -->
+<script src="{% static 'blog_app/js/comment.js' %}" defer></script>
 {% endblock page_content %}
+
+
+
+
+
+
 
 
 
