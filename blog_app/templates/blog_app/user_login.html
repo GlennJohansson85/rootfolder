@@ -6,20 +6,20 @@
 {% endblock title %}
 
 {% block page_content %}
-    <div class="user_login-container">
+    <div class="user-login">
         <h2>Login</h2>
 
         {% if form.errors %}
-            <div class="error-message">
+            <div class="user-login-error">
                 <p>Login failed. Try again!</p>
             </div>
         {% endif %}
 
         <p>You need to be logged in to gain access.</p>
 
-        <form method="post" action="{% url 'user_login' %}" class="user_login-form">
+        <form method="post" action="{% url 'user_login' %}" class="user-login-form">
             {% csrf_token %}
-
+            
             <label for="{{ form.username.id_for_label }}">Username:</label>
             {{ form.username }}
 
@@ -30,7 +30,7 @@
         </form>
 
         {% if request.GET.next %}
-            <p><a href="{% url 'user_registration' %}">Create an account</a></p>
+            <p class= "join"><a href="{% url 'user_registration' %}">Join now!</a></p>
         {% endif %}
 
         {% if user.is_authenticated %}
