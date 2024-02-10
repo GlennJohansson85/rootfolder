@@ -9,18 +9,16 @@
     <link rel="stylesheet" href="{% static 'blog_app/css/style.css' %}">
 </head>
 <body>
-    <div class="navbar">
+    <div class="base-navbar">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'user_login' %}">Login</a>
         <a href="{% url 'user_logout' %}">Logout</a>
         <a href="{% url 'post' %}">Post</a>
     </div>
-    <div class="blog-container">
-        <h1>My Family´s Travel Blog</h1>
-        <hr>
-        <div class="content-container">
-            {% block page_content %}{% endblock page_content %}
-        </div>
+    
+     <div class="content-container">
+        {% block page_content %}{% endblock page_content %}
     </div>
+    <script src="{% static 'blog_app/js/navbar.js' %}" defer></script>
 </body>
 </html>
