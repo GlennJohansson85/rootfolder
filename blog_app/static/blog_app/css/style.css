@@ -7,7 +7,8 @@ body {
     max-width: 1200px;
     margin: 20px auto;
     background: linear-gradient(to left, rgba(255, 223, 52, 0.96), rgba(255, 244, 106, 0.96));
-    font-family: "QuicksandbookRegular-0gW4"; 
+    font-family: "QuicksandbookRegular-0gw4"; 
+    font-weight: 600;
     color: #333; 
 }
 
@@ -22,21 +23,33 @@ body {
 }
 
 h1 {
-    font-size: 63px;
+    font-size: 60px;
     font-family: 'QuicksandboldRegular-44B9';
     letter-spacing: -5px;
     text-align: center;
-    color: white;
     background: linear-gradient(to left, #ffac3b, #fd69a8);
     -webkit-background-clip: text;
     background-clip: text;         
     color: transparent;            
 }
 
+h2 { 
+    font-size: 30px;
+    font-family: 'QuicksandboldRegular-44B9';
+    letter-spacing: -2px;
+    color:#fd69a8;
+}
+
+h3 { 
+    font-size: 20px;
+    font-family: 'QuicksandboldRegular-44B9';
+    color:#fd69a8;
+}
+
 /* =================================================================== FONT */
 @font-face {
-    font-family: 'QuicksandboldRegular-44B9'; 
-    src: url('/static/blog_app/fonts/QuicksandbookRegular-0gW4');
+    font-family: 'QuicksandbookRegular-0gW4'; 
+    src: url('/static/blog_app/fonts/QuicksandbookRegular-0gW4.otf');
 }
 
 @font-face {
@@ -47,24 +60,22 @@ h1 {
 /* ========================================================================
                                                                                                                     USER_LOGIN.HTML
    ========================================================================= */
-.join {
-    font-size: 40px;
-    font-family: 'QuicksandboldRegular-44B9';
-    letter-spacing: -2px;
-    text-align: center;
-    color: #fd69a8;
-    animation: sleekAnimation 4s infinite ease-in-out;
-    transition: transform 2s ease-in-out;
-    text-decoration: none;
+.user-login-form input[type="text"],
+.user-login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
-.join a:hover {
-    color: #fd69a8;
-    transform: scale(1.2);
-}
+
+
 
 
 /* =============================================================
-                                                                                                                NAVBAR -
+                                                                                                                NAVBAR
 ===============================================================*/
 .base-navbar {
     max-width: 830px; 
@@ -80,6 +91,7 @@ h1 {
 }
 
 .base-navbar a {
+    font-size: 20px;
     margin: 0 15px; 
     text-decoration: none;
     color: #fff; /
@@ -117,10 +129,21 @@ h1 {
 }
 
 /* ========================================================================
-                                                                            POST WALL - DISPLAY POSTS - HOME.HTML
+                                                                                                                                HOME.HTML
    ========================================================================= */
+.plus-icon-link {
+    width: 2em;
+    height: 2em;
+    fill: #fd69a8; 
+    transition: transform 0.2s ease-in-out, fill 0.2s ease-in-out;
+    display: block;
+    margin: auto;
+}
 
-
+.plus-link:hover .plus-icon-link {
+    transform: scale(1.2);
+    animation: none; 
+}
 .post-card {
     margin-bottom: 30px;
 }
@@ -168,7 +191,7 @@ select {
     font-size: 16px;
 }
 
-.post-button {
+.button {
     background: linear-gradient(to left, rgba(253, 105, 168, 0.9), #ffac3b);
     color: #fff;
     padding: 12px 24px;
