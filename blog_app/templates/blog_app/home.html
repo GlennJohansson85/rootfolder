@@ -9,16 +9,19 @@
 {% block page_content %}
     <!-- CONTAINER FOR ALL POSTS -->
     <div class="post-container">
-        <h1>My Family´s Travel Blog</h1>
-        <hr>
+        <h1>Memories...</h1>
+        
         <!-- TITLE -->
-        <h2>All Posts</h2>
         
         <!-- CREATE NEW POST LINK -->
         {% if user_needs_login %}
             <p>You need to be logged in to create a new post. <a href="{% url 'user_login' %}">Login here</a>.</p>
+        
         {% else %}
-            <a href="{% url 'post' %}">Create a New Post</a>
+            <a href="{% url 'post' %}" class="plus-link">
+                <img src="{% static 'blog_app/icons/plus-solid.svg' %}" alt="Plus Icon" class="plus-icon-link">
+            </a>
+
         {% endif %}
 
         <!-- POST CARD -->
@@ -47,7 +50,7 @@
                         <textarea name="text" id="id_content" rows="4" cols="50" required></textarea>
 
                         <!-- Hidden input for the author field -->
-                        {{ commentForm.author }}
+                        {{ commentForm.instance.author }} {# Update with the correct field name for author in your form #}
 
                         <!-- Submit button -->
                         <button type="submit">Submit Comment</button>
@@ -56,23 +59,24 @@
                     <p><a href="{% url 'user_login' %}">Login</a> to leave a comment.</p>
                 {% endif %}
 
-                <!-- Display comments for the current post -->
+                <!-- Display comments for the current post (showing latest comment first) -->
                 <div class="comments-display">
                     <h4>Comments:</h4>
-                    {% for comment in post.comments.all %}
+                    {% for comment in post.comments.all|slice:"::-1" %}
                         <p>{{ comment.user.username }}: {{ comment.text }}</p>
                     {% endfor %}
                 </div>
-
+                
                 <hr class="comment-divider"> <!-- Add a horizontal line as a divider -->
 
             </div>
         {% endfor %}
     </div>
 
-<!-- Include the comment-script.js file for AJAX functionality -->
-<script src="{% static 'blog_app/js/comment.js' %}" defer></script>
+    <!-- Include the comment-script.js file for AJAX functionality -->
+    <script src="{% static 'blog_app/js/comment.js' %}" defer></script>
 {% endblock page_content %}
+
 
 
 
