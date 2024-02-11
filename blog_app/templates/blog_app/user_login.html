@@ -2,7 +2,7 @@
 {% extends 'blog_app/base.html' %}
 
 {% block title %}
-    My Family's Travels Blog - Login Page
+    Memories - Login Page
 {% endblock title %}
 
 {% block page_content %}
@@ -17,20 +17,26 @@
 
         <p>You need to be logged in to gain access.</p>
 
+        <br>
+        
         <form method="post" action="{% url 'user_login' %}" class="user-login-form">
             {% csrf_token %}
             
             <label for="{{ form.username.id_for_label }}">Username:</label>
             {{ form.username }}
 
+            <br><br>
+            
             <label for="{{ form.password.id_for_label }}">Password:</label>
             {{ form.password }}
 
-            <button type="submit">Login</button>
+            <button class="button" type="submit">Login</button>
         </form>
 
+        <br>
+        
         {% if request.GET.next %}
-            <p class= "join"><a href="{% url 'user_registration' %}">Join now!</a></p>
+            <button class= "button"><a href="{% url 'user_registration' %}">Register</a></button>
         {% endif %}
 
         {% if user.is_authenticated %}
