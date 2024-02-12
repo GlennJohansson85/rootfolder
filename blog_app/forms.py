@@ -2,7 +2,9 @@
 #                              FORMS.PY
 # ======================================
 from django import forms
+from django.core.exceptions import ValidationError
 from .models import Post, Comment
+from django.contrib.auth.models import User
 
 
 class PostForm(forms.ModelForm):
@@ -11,10 +13,28 @@ class PostForm(forms.ModelForm):
         fields = ['title', 'content', 'image', 'categories']
 
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
         super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['categories'].widget.attrs.update(
-            {'class': 'form-control'}
-        )
+        self.fields['categories'].widget.attrs.update({'class': 'form-control'})
+        if user:
+            self.user = user
+
+    def save(self, commit=True):
+        post = super(PostForm, self).save(commit=False)
+        if hasattr(self, 'user'):
+            post.user = self.user
+
+        if commit:
+            post.save()
+
+        return post
+
+
+class PostDeleteForm(forms.Form):
+    confirm = forms.BooleanField(
+        required=True,
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+    )
 
 
 class CommentForm(forms.ModelForm):
