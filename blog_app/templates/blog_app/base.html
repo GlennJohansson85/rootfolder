@@ -1,13 +1,17 @@
-<!-- C:\rootfolder\blog_app\templates\blog_app\base.html -->
+<!--======================================
+                                    BASE.HTML
+   ========================================-->
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Memories{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'blog_app/css/style.css' %}">
 </head>
+
 <body>
     <div class="base-navbar">
         <a href="{% url 'home' %}">Home</a>
@@ -15,10 +19,11 @@
         <a href="{% url 'user_logout' %}">Logout</a>
         <a href="{% url 'post' %}">Post</a>
     </div>
-    
-     <div class="content-container">
+
+    <div class="content-container">
         {% block page_content %}{% endblock page_content %}
     </div>
     <script src="{% static 'blog_app/js/navbar.js' %}" defer></script>
 </body>
+
 </html>

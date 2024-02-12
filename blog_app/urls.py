@@ -1,4 +1,6 @@
-#blog_app/urls.py
+#======================================
+#                       BLOG_APP/URLS.PY
+#======================================
 from django.urls import path
 from blog_app import views
 

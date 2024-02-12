@@ -1,82 +1,26 @@
-/* static/css/style.css */
-
-/* ========================================================================
+/* ======================================
+                              STYLE.CSS
+========================================
                                                                                                  OVERALL STYLES - BASE.HTML
-   ========================================================================= */
+========================================================================== */
 body {
     max-width: 1200px;
     margin: 20px auto;
-    background: linear-gradient(to left, rgba(255, 223, 52, 0.96), rgba(255, 244, 106, 0.96));
-    font-family: "QuicksandbookRegular-0gw4"; 
+    background: linear-gradient(to left, #ffdf34, #fff46a);
+    font-family: 'QuicksandbookRegular-0gW4'; 
     font-weight: 600;
-    color: #333; 
 }
 
 .content-container {
     max-width: 800px;
     margin: 10px auto; 
-    padding: 20px;
+    padding: 10px 10px;
     border-color: #ffac3b;
     border-radius: 10px;
     background: linear-gradient(to right, #fffbcf, #fff35a);
     overflow: hidden;
 }
 
-h1 {
-    font-size: 60px;
-    font-family: 'QuicksandboldRegular-44B9';
-    letter-spacing: -5px;
-    text-align: center;
-    background: linear-gradient(to left, #ffac3b, #fd69a8);
-    -webkit-background-clip: text;
-    background-clip: text;         
-    color: transparent;            
-}
-
-h2 { 
-    font-size: 30px;
-    font-family: 'QuicksandboldRegular-44B9';
-    letter-spacing: -2px;
-    color:#fd69a8;
-}
-
-h3 { 
-    font-size: 20px;
-    font-family: 'QuicksandboldRegular-44B9';
-    color:#fd69a8;
-}
-
-/* =================================================================== FONT */
-@font-face {
-    font-family: 'QuicksandbookRegular-0gW4'; 
-    src: url('/static/blog_app/fonts/QuicksandbookRegular-0gW4.otf');
-}
-
-@font-face {
-    font-family: 'QuicksandboldRegular-44B9'; 
-    src: url('/static/blog_app/fonts/QuicksandboldRegular-44B9.otf');
-}
-
-/* ========================================================================
-                                                                                                                    USER_LOGIN.HTML
-   ========================================================================= */
-.user-login-form input[type="text"],
-.user-login-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-
-
-
-/* =============================================================
-                                                                                                                NAVBAR
-===============================================================*/
 .base-navbar {
     max-width: 830px; 
     margin: 20px auto 20px;
@@ -128,46 +72,123 @@ h3 {
     }
 }
 
+h1, h2, h3 {font-style: 'QuicksandboldRegular-44B9';}
+
+h1 {
+    font-size: 50px;
+    letter-spacing: -3px;
+    text-align: center;
+    background: linear-gradient(to left, #ffac3b, #fd69a8);
+    -webkit-background-clip: text;
+    background-clip: text;         
+    color: transparent;            
+}
+
+h2 { 
+    font-size: 25px;
+    letter-spacing: -2px;
+    color:#000;
+}
+
+h3 { 
+    font-size: 18px;
+    color:#000;
+}
+
+p {
+    font-size: 12px;
+}
+
+@font-face {
+    font-family: 'QuicksandbookRegular-0gW4'; 
+    src: url('/static/blog_app/fonts/QuicksandbookRegular-0gW4.otf');
+}
+
+@font-face {
+    font-family: 'QuicksandboldRegular-44B9'; 
+    src: url('/static/blog_app/fonts/QuicksandboldRegular-44B9.otf');
+}
+/* ========================================================================
+                                                                                                                    USER_LOGIN.HTML
+   ========================================================================= */
+.user-login-form input[type="text"],
+.user-login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 /* ========================================================================
                                                                                                                                 HOME.HTML
    ========================================================================= */
-.plus-icon-link {
-    width: 2em;
-    height: 2em;
-    fill: #fd69a8; 
-    transition: transform 0.2s ease-in-out, fill 0.2s ease-in-out;
-    display: block;
-    margin: auto;
-}
-
-.plus-link:hover .plus-icon-link {
-    transform: scale(1.2);
-    animation: none; 
-}
 .post-card {
     margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.img-info-text {
+    font-size: 11px;
+    color: #000000; 
+}
+
+.plus-icon-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse 1.5s infinite;
+    transition: box-shadow 0.2s ease;
+    margin: 20px auto; 
+}
+
+.plus-icon-link:hover {
+    box-shadow: 0 0 10px #f21d46;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .post-card-img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
-    justify-content: center;
-    align-items: center;
-    display: flex;
     border-radius: 5px;
 }
 
-.display-comments {
+.comments-display {
     height: auto; 
-    padding: 20px;
-    background-color: #ffac3b;
+    padding: 5px 10px;
+    background-color: #000;
     border-radius: 10px;
     margin-top: 20px;
+    background-color: #eaeaea;
+}
+
+..comment-item {
+    padding: -5px 5px -5px 5px; 
+}
+
+.comment-divider {
+    margin-top: -5px; 
+    margin-bottom: -5px; 
 }
 
 /* =========================================================================
-                                                                                                     CREATE A POST - POST.HTML
+                                                                                                                                    POST.HTML
    ========================================================================== */
 .form-group {
     margin-bottom: 20px;
@@ -179,25 +200,32 @@ h3 {
     font-weight: bold;
 }
 
-.post-textarea textarea,
+.textarea textarea,
 input[type="text"],
 select {
     width: 100%;
     padding: 12px;
     box-sizing: border-box;
     margin-top: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #000000;
     border-radius: 8px;
     font-size: 16px;
 }
 
 .button {
-    background: linear-gradient(to left, rgba(253, 105, 168, 0.9), #ffac3b);
+    background: linear-gradient(to left, #fd69a8, #ffac3b);
     color: #fff;
     padding: 12px 24px;
+    margin-bottom:10px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+
+}
+
+.button:hover {
+    box-shadow: 0 0 5px rgba(253, 105, 168, 0.9);
+    background: linear-gradient(to left, #ffac3b, #fd69a8);
 }
 
 .back-link {
@@ -206,30 +234,3 @@ select {
     color: #007bff;
     text-decoration: none;
 }
-
-
-/* USER_LOGIN.HTML and USER_LOGOUT.HTML styles remain unchanged */
-
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-    .base-navbar .burger-menu {
-        display: flex;
-    }
-
-    .base-navbar .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background-color: #333;
-    }
-
-    .base-navbar .nav-links a {
-        margin: 0;
-        padding: 15px 20px;
-        text-align: center;
-    }
-}
-

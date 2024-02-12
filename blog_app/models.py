@@ -1,4 +1,6 @@
-# blog_app/models.py
+#======================================
+#                              MODELS.PY
+#======================================
 from django.db import models
 from django.contrib.auth.models import User
 

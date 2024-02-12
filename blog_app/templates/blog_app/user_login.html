@@ -1,48 +1,48 @@
-<!-- C:\rootfolder\blog_app\templates\blog_app\user_login.html -->
+<!--======================================
+                                USER_LOGIN.HTML
+   ========================================-->
 {% extends 'blog_app/base.html' %}
 
 {% block title %}
-    Memories - Login Page
+Memories - Login Page
 {% endblock title %}
 
 {% block page_content %}
-    <div class="user-login">
-        <h2>Login</h2>
+<div class="user-login">
+    <h2>Login</h2>
 
-        {% if form.errors %}
-            <div class="user-login-error">
-                <p>Login failed. Try again!</p>
-            </div>
-        {% endif %}
-
-        <p>You need to be logged in to gain access.</p>
-
-        <br>
-        
-        <form method="post" action="{% url 'user_login' %}" class="user-login-form">
-            {% csrf_token %}
-            
-            <label for="{{ form.username.id_for_label }}">Username:</label>
-            {{ form.username }}
-
-            <br><br>
-            
-            <label for="{{ form.password.id_for_label }}">Password:</label>
-            {{ form.password }}
-
-            <button class="button" type="submit">Login</button>
-        </form>
-
-        <br>
-        
-        {% if request.GET.next %}
-            <button class= "button"><a href="{% url 'user_registration' %}">Register</a></button>
-        {% endif %}
-
-        {% if user.is_authenticated %}
-        <p>Already logged in as <strong> {{ user.username }}</strong>. <a href="{% url 'logout' %}">Logout</a> if you want to log in with a different account.</p>
-        {% endif %}
+    {% if form.errors %}
+    <div class="user-login-error">
+        <h3>Login failed. Try again!</h3>
     </div>
+    {% endif %}
+
+    <h3>You need to be logged in to gain access.</h3>
+
+    <br>
+
+    <form method="post" action="{% url 'user_login' %}" class="user-login-form">
+        {% csrf_token %}
+
+        <label for="{{ form.username.id_for_label }}">Username:</label>
+        {{ form.username }}
+
+        <br><br>
+
+        <label for="{{ form.password.id_for_label }}">Password:</label>
+        {{ form.password }}
+
+        <button class="button" type="submit">Login</button>
+    </form>
+
+    <br>
+
+    {% if request.GET.next %}
+    <button class="button"><a href="{% url 'user_registration' %}">Register</a></button>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+    <h3>Already logged in as <strong> {{ user.username }}</strong>. <a href="{% url 'logout' %}">Logout</a> if you want to log in with a different account.</h3>
+    {% endif %}
+</div>
 {% endblock page_content %}
-
-

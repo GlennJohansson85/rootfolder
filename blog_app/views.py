@@ -1,4 +1,6 @@
-# blog_app/views.py
+#======================================
+#                              VIEWS.PY
+#======================================
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -7,7 +9,6 @@ from blog_app.models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.urls import reverse
 import logging
-
 
 
 def user_registration(request):

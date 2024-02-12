@@ -1,17 +1,8 @@
-// ROOTFOLDER/BLOG_APP/STATIC/BLOG_APP/JS/SCRIPT.JS
-
-// base.html - navbar
-function toggleMenu() {
-    var navLinks = document.getElementById('navLinks');
-    if (navLinks) {
-        navLinks.style.display = (navLinks.style.display === 'block') ? 'none' : 'block';
-    }
-}
 // Comment form submission with AJAX
-document.addEventListener("DOMContentLoaded", function() {
-    var commentForm = document.getElementById('commentForm');
+document.addEventListener("DOMContentLoaded", function () {
+    var commentForm = document.querySelector('.commentForm');
     if (commentForm) {
-        commentForm.addEventListener("submit", function(event) {
+        commentForm.addEventListener("submit", function (event) {
             event.preventDefault();
 
             // Serialize the form data
@@ -26,15 +17,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     'X-CSRFToken': getCookie('csrftoken')   // Include CSRF token
                 },
             })
-            .then(response => response.json())
-            .then(data => {
-                // Update the comments section with the new comment
-                var commentsSection = document.querySelector('.comments-section');
-                if (commentsSection) {
-                    commentsSection.innerHTML = data.html;
-                }
-            })
-            .catch(error => console.error('Error submitting comment:', error));
+                .then(response => response.json())
+                .then(data => {
+                    // Update the comments section with the new comment
+                    var commentsSection = document.querySelector('.comments-display');
+                    if (commentsSection) {
+                        commentsSection.innerHTML = data.html;
+                    }
+                })
+                .catch(error => console.error('Error submitting comment:', error));
         });
     }
 });
