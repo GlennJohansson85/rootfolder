@@ -1,22 +1,21 @@
-<!--======================================
-                            USER_LOGOUT.HTML
-   ========================================-->
+<!-- USER_LOGOUT.HTML -->
 {% extends 'blog_app/base.html' %}
 
 {% block page_title %}
-<title>User Logout</title>
+    <title>User Logout</title>
 {% endblock page_title %}
 
 {% block page_content %}
-<div class="user_logout-container">
-    <h2>User Logout</h2>
-
-    {% if user.is_authenticated %}
-    <h3>You have been successfully logged out.</h3>
-    {% else %}
-    <h3>You are not currently logged in.</h3>
-    {% endif %}
-
-    <h3><a href="{% url 'home' %}">Back to Home</a></h3>
-</div>
+    <div class="user_logout-container">
+        <h2>User Logout</h2>
+        
+        {% if user.is_authenticated %}
+            <p>You have been successfully logged out.</p>
+        {% else %}
+            <p>You are not currently logged in.</p>
+        {% endif %}
+        
+        <a href="{% url 'user_login' %}">Back to login</a>
+        <button class="button"><a href="{% url 'user_registration' %}">Register</a></button>
+    </div>
 {% endblock page_content %}

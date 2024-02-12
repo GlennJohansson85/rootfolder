@@ -13,7 +13,14 @@ Memories - Login Page
 
     {% if form.errors %}
     <div class="user-login-error">
-        <h3>Login failed. Try again!</h3>
+        <h3>Login failed. Please correct the following errors:</h3>
+        <ul>
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <li>{{ field|title }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
     </div>
     {% endif %}
 
@@ -42,7 +49,8 @@ Memories - Login Page
     {% endif %}
 
     {% if user.is_authenticated %}
-    <h3>Already logged in as <strong> {{ user.username }}</strong>. <a href="{% url 'logout' %}">Logout</a> if you want to log in with a different account.</h3>
+    <h3>Already logged in as <strong>{{ user.username }}</strong>. 
     {% endif %}
-</div>
+
 {% endblock page_content %}
+
