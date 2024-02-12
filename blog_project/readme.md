@@ -75,4 +75,28 @@ I wanted to keep the app simple and modern.
 * To be able to post you must become a member. If you by any chance forget if your logged in or not it will show at the bottom of the screen.
 
 ![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/01b99742-6786-423e-bd80-ff7080786d23)
-* When pressing the logout link you see this page. 
+* When pressing the logout link you see this page.
+
+### Testing
+## Python test
+In "tests.py" within the "blog_app" folder all tests performed can be showned excepts responsive tests and formalia:
+* def test_user_registration_view
+* def test_user_login_view
+* def test_home_view
+* def test_post_category_view
+* def test_post_create_view
+* def test_delete_post_view
+* def test_comment_view
+![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/a1c9475c-80bf-487d-b8be-935b581b868c)
+
+## Responsiveness - test - Iphone
+![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/f3d88262-d2aa-4dc0-9c9f-f04995496a67)
+
+## FLAKE8
+Used Visual Studios built-in pep8 control - No errors
+(Note: First time using VS so i really hope I did it correct) 
+
+## Agile - light
+![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/05a8633a-3a75-405a-bd70-98bff0895b57)
+
+
