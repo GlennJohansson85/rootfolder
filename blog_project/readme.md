@@ -1,10 +1,10 @@
 # Django Blog Project
 
-## Overview
+### Overview
 
 This Django-based "blogging" platform provides users a.k.a my family members with the ability to create accounts, log in, and share their thoughts through posts. It includes features for post creation, category-based post filtering, and user interaction.
 
-## Features
+### Features
 
 1. **User Registration:**
    - Users can register for an account using the user registration form.
@@ -54,7 +54,7 @@ I wanted to keep the app simple and modern.
 
 ### Images ###
 
-## Navbar ##
+#### Navbar ##
 
 ![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/73759dc7-65ac-42b7-9218-4fd7ba5726ed)
 * Used four links = "Home", "Login", "Logout" and "Post". To register its enough to click on the post link to become a member.
@@ -78,7 +78,7 @@ I wanted to keep the app simple and modern.
 * When pressing the logout link you see this page.
 
 ### Testing
-## Python test
+#### Python test
 In "tests.py" within the "blog_app" folder all tests performed can be showned excepts responsive tests and formalia:
 * def test_user_registration_view
 * def test_user_login_view
@@ -89,14 +89,23 @@ In "tests.py" within the "blog_app" folder all tests performed can be showned ex
 * def test_comment_view
 ![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/a1c9475c-80bf-487d-b8be-935b581b868c)
 
-## Responsiveness - test - Iphone
+#### Responsiveness - test - Iphone
 ![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/f3d88262-d2aa-4dc0-9c9f-f04995496a67)
 
-## FLAKE8
+#### FLAKE8
 Used Visual Studios built-in pep8 control - No errors
 (Note: First time using VS so i really hope I did it correct) 
 
 ## Agile - light
 ![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/05a8633a-3a75-405a-bd70-98bff0895b57)
 
+## Credits
+- Code Institue lessons
+- Facebook
+- Pythontutor.com
+- Django official homepage
+- Django Forum
+- Upwork.com
 
+### Developer
+Glenn Johansson
