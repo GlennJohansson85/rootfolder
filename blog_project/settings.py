@@ -1,6 +1,6 @@
-#======================================
+# ======================================
 #                           SETTINGS.PY
-#======================================
+# ======================================
 from pathlib import Path
 import os
 
@@ -11,7 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@u389q+1f$lzb1*zm9*^28k^rctygnxp#q)&d=y)8%prc!3rl$'
+SECRET_KEY = (
+    'django-insecure-@u389q+1f$lzb1*zm9*^28k^rctygnxp#q)&d=y)8%prc!3rl$'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,16 +80,25 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator',
+        )
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.MinimumLengthValidator',
+        )
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.CommonPasswordValidator',
+        )
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.NumericPasswordValidator',
+        )
     },
 ]
 
@@ -118,7 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # User Functions
 
-LOGIN_URL = 'user_login' 
+LOGIN_URL = 'user_login'
 
 LOGIN_REDIRECT_URL = '/home/'
 

@@ -1,14 +1,17 @@
-#======================================
+# ======================================
 #                              ADMIN.PY
-#======================================
+# ======================================
 from django.contrib import admin
 from .models import PostCategory, Post, Comment
+
 
 class CategoryAdmin(admin.ModelAdmin):
     pass
 
+
 class PostAdmin(admin.ModelAdmin):
-    pass 
+    pass
+
 
 class CommentAdmin(admin.ModelAdmin):
     pass

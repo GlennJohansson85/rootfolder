@@ -1,4 +1,6 @@
-// Comment form submission with AJAX
+// ======================================
+//                                    COMMENT.JS
+// ======================================-->
 document.addEventListener("DOMContentLoaded", function () {
     var commentForm = document.querySelector('.commentForm');
     if (commentForm) {

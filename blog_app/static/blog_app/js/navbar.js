@@ -1,3 +1,6 @@
+// ======================================
+//                                    NAVBAR.JS
+// ======================================-->
 function toggleMenu() {
     var navLinks = document.getElementById('navLinks');
     if (navLinks) {
