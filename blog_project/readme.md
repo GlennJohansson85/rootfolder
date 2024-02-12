@@ -59,3 +59,20 @@ I wanted to keep the app simple and modern.
 ![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/73759dc7-65ac-42b7-9218-4fd7ba5726ed)
 * Used four links = "Home", "Login", "Logout" and "Post". To register its enough to click on the post link to become a member.
 
+![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/3398e57b-81b9-4369-ac5c-917b1c7647cd)
+* When doing this project I had facebook in mind the entire time. How could I make it better? What features should I implement and what should I leave out? This way of thinking made the project so much harder. However, by pressing this plus icon you add your post and upload your image. Easy peasy.
+
+![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/8172a554-0d53-4e60-86f8-7b482c4ed37b)
+* When register your post you see the fill in the following fields.
+
+![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/547cfc8d-5124-4f3f-ab5a-ebf8e8feecfd)
+* On the wall it looks like this. Only users whom post can delete their posts(and admins) by clicking the delete button below their post(which is only visible to the one that posted).
+
+![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/cf4013b9-3f5d-4ec6-abeb-caee0a2bb248)
+* Users can then comment on the post and see what other users have commented before.
+
+![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/803b270d-9a88-4a35-bb0e-209ba79820be)
+* To be able to post you must become a member. If you by any chance forget if your logged in or not it will show at the bottom of the screen.
+
+![image](https://github.com/GlennJohansson85/rootfolder/assets/139962883/01b99742-6786-423e-bd80-ff7080786d23)
+* When pressing the logout link you see this page. 
